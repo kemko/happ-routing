@@ -1,0 +1,14 @@
+This project combines selected categories from MetaCubeX/meta-rules-dat
+(GPL-3.0) and RussiaFancyLists (MIT), with a Happ routing profile.
+The combined dataset is redistributed under GPL-3.0. Original licenses
+and notices are in licenses/. Source URLs are in sources.json; each
+build publishes the original fetched lists and SHA-256 hashes.
+
+MetaCubeX/meta-rules-dat:
+https://github.com/MetaCubeX/meta-rules-dat
+
+Noktomezo/RussiaFancyLists:
+https://github.com/Noktomezo/RussiaFancyLists
+
+The builder uses the official V2Ray/Xray protobuf schema via the
+pinned Go module in go.mod. See upstream module licenses.

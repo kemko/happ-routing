@@ -1,0 +1,58 @@
+name: Update geodata
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '*.go'
+      - 'go.mod'
+      - 'go.sum'
+      - 'sources.json'
+      - 'happ-routing.json'
+      - 'scripts/**'
+      - 'licenses/**'
+      - 'LICENSE'
+      - 'NOTICE'
+      - '.github/workflows/build.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-geodata
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+      - name: Test builder
+        run: |
+          go test ./...
+          python3 -m unittest discover -s scripts
+      - name: Build databases and profile
+        run: |
+          go run .
+          python3 scripts/profile.py
+          cp LICENSE NOTICE sources.json dist/
+          cp -R licenses dist/
+          cp README.md dist/
+          cd dist
+          sha256sum geosite.dat geoip.dat happ-routing.json manifest.json > SHA256SUMS
+      - name: Publish latest files to release branch
+        run: |
+          publish_dir="$RUNNER_TEMP/happ-routing-release"
+          git worktree add --detach "$publish_dir" HEAD
+          git -C "$publish_dir" switch --orphan release
+          cp -a dist/. "$publish_dir/"
+          git -C "$publish_dir" add .
+          git -C "$publish_dir" -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "Update geodata $(date -u +%Y-%m-%d)"
+          git -C "$publish_dir" push --force origin HEAD:refs/heads/release

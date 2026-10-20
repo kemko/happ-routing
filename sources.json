@@ -1,0 +1,86 @@
+{
+  "domains": [
+    {
+      "tag": "ai",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "ai-cn",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "gemini",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "youtube",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "twitter",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "tiktok",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "telegram",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "cloudflare",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cloudflare.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "kinopub",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/kinopub.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "private",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.list",
+      "format": "mihomo"
+    },
+    {
+      "tag": "rkn-domains",
+      "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/domains/full-sld.lst",
+      "format": "suffix"
+    },
+    {
+      "tag": "foreign-geoblock",
+      "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/full-sld.lst",
+      "format": "suffix"
+    }
+  ],
+  "ips": [
+    {
+      "tag": "twitter",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.list"
+    },
+    {
+      "tag": "telegram",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.list"
+    },
+    {
+      "tag": "cloudflare",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cloudflare.list"
+    },
+    {
+      "tag": "private",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.list"
+    },
+    {
+      "tag": "rkn-ip",
+      "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/full.lst"
+    }
+  ]
+}
