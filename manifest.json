@@ -1,0 +1,136 @@
+{
+  "built_at": "2026-10-28T09:35:47.64001253Z",
+  "inputs": [
+    {
+      "kind": "domains",
+      "tag": "ai",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.list",
+      "sha256": "34ff5f90a39dd4185e5cd0f402943133f049a444a242fb20b90fc016c34cbc57",
+      "entries": 213
+    },
+    {
+      "kind": "domains",
+      "tag": "ai-cn",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.list",
+      "sha256": "1216ac54b0fda5b4d373bf9a53e037e9f95988efa5f62eca3822e56a0f789a7d",
+      "entries": 116
+    },
+    {
+      "kind": "domains",
+      "tag": "gemini",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google-gemini.list",
+      "sha256": "d7a51a33dccab26a25260836f23b02cc283590cd5384fcf93de82c3331ce56a9",
+      "entries": 49
+    },
+    {
+      "kind": "domains",
+      "tag": "youtube",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.list",
+      "sha256": "e95f241fa4357918fc1066390c352aad750b571ddea15e3421d30c84e947ac10",
+      "entries": 178
+    },
+    {
+      "kind": "domains",
+      "tag": "twitter",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.list",
+      "sha256": "7bc17d19d2fa089b36993e56275eb0eb7355963f3e90a711364086442fd369c0",
+      "entries": 24
+    },
+    {
+      "kind": "domains",
+      "tag": "tiktok",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/tiktok.list",
+      "sha256": "09edefc16d3913b24fa7d0d2bae1679e9be03b6f4e1d879e96d937a1d020e7db",
+      "entries": 37
+    },
+    {
+      "kind": "domains",
+      "tag": "telegram",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.list",
+      "sha256": "2448b2699519cd258b10232fcacd01e89b7db04c8ce7fc860a4962518370a329",
+      "entries": 21
+    },
+    {
+      "kind": "domains",
+      "tag": "cloudflare",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cloudflare.list",
+      "sha256": "f0b3b2c6dcbcd3f6e52fb8c3fc955dfe189cada562567f019b1e1d5d35b76aba",
+      "entries": 76
+    },
+    {
+      "kind": "domains",
+      "tag": "kinopub",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/kinopub.list",
+      "sha256": "87b0456cd9d08a55fffc9e566c76259b4326f299b78c7b4ee207650c54d5aa4f",
+      "entries": 18
+    },
+    {
+      "kind": "domains",
+      "tag": "private",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.list",
+      "sha256": "db9b2da8d7e90f09e183dcde096f72adaacd8de21e0f09d364b413085ecb7b57",
+      "entries": 132
+    },
+    {
+      "kind": "domains",
+      "tag": "rkn-domains",
+      "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/domains/full-sld.lst",
+      "sha256": "e9b10e310fc29d573693511d58d0e1e09a7b978e23038dbef4237fab5900c662",
+      "entries": 1312751
+    },
+    {
+      "kind": "domains",
+      "tag": "foreign-geoblock",
+      "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/full-sld.lst",
+      "sha256": "f4f9d445c1b5cbd03a0516c483b4a8ffe049e0f40168754406062db54618e5cb",
+      "entries": 1195
+    },
+    {
+      "kind": "ips",
+      "tag": "twitter",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.list",
+      "sha256": "07cbf8d51170d689472d0abb997103d80485bf2cb0ca814ea8445a9ca11a6b3e",
+      "entries": 19
+    },
+    {
+      "kind": "ips",
+      "tag": "telegram",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.list",
+      "sha256": "b0a0a5a4280f2c713a26bf1763317be5aefeda02e4e78dab7c2efbda02663181",
+      "entries": 12
+    },
+    {
+      "kind": "ips",
+      "tag": "cloudflare",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cloudflare.list",
+      "sha256": "aa14e98d40b3fe6340354e6de493e6b3d380c0fe58acc71707b990a966b3cace",
+      "entries": 780
+    },
+    {
+      "kind": "ips",
+      "tag": "private",
+      "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.list",
+      "sha256": "3105f74241f0c3fc4e0d3a67ffc33a018a3eb7913725a7219576603b79935c3c",
+      "entries": 28
+    },
+    {
+      "kind": "ips",
+      "tag": "rkn-ip",
+      "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/full.lst",
+      "sha256": "066aee99cc7ee56822b329abb5f1b496b1d8af8e1d8f97ce350cb5b3b83d968e",
+      "entries": 58587
+    }
+  ],
+  "outputs": [
+    {
+      "name": "geosite.dat",
+      "sha256": "b2a1183e005490afa1c10862a5b3ba1da4077fa7f45c082ed8283aeb955e6660",
+      "bytes": 29116668
+    },
+    {
+      "name": "geoip.dat",
+      "sha256": "1edcdfcc9220475d684b748009d6d5ad0cfbe2cb35aeb688f8e864f5e4aa73df",
+      "bytes": 595488
+    }
+  ]
+}
