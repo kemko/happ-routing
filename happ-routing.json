@@ -15,6 +15,10 @@
   },
   "DirectSites": [
     "domain:alib.ru",
+    "domain:rutube.ru",
+    "domain:rutubelist.ru",
+    "domain:rtbcdn.ru",
+    "domain:rutube.sport",
     "geosite:private"
   ],
   "DirectIp": [
