@@ -72,13 +72,15 @@ class MihomoTest(unittest.TestCase):
                         for _ in range(100):
                             try:
                                 with opener.open(f"http://127.0.0.1:{controller}/rules", timeout=0.2):
-                                    break
+                                    # The controller starts before the proxy listener.
+                                    with socket.create_connection(("127.0.0.1", port), timeout=0.2):
+                                        break
                             except OSError:
                                 if process.poll() is not None:
                                     break
                                 time.sleep(0.05)
                         else:
-                            self.fail("Mihomo controller did not start")
+                            self.fail("Mihomo API/proxy did not become ready:\n" + (root / "mihomo.log").read_text())
                         self.assertIsNone(process.poll())
                         for name, direct in (
                             ("both.test", True), ("sub.both.test", True),
