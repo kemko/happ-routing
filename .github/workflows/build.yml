@@ -12,6 +12,7 @@ on:
       - 'go.sum'
       - 'sources.json'
       - 'happ-routing.json'
+      - 'mihomo-rules.yaml'
       - 'scripts/**'
       - 'licenses/**'
       - 'LICENSE'
@@ -34,6 +35,13 @@ jobs:
       - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version-file: go.mod
+      - name: Download MRS converter
+        run: |
+          curl --fail --location --retry 3 https://github.com/MetaCubeX/mihomo/releases/download/v1.19.33/mihomo-linux-amd64-v1-v1.19.33.gz -o "$RUNNER_TEMP/mihomo.gz"
+          echo "8ec92e7b2fdc6b853ba00156bab7e4e965c8b0d843b8c4ac8ab98795f02ad524  $RUNNER_TEMP/mihomo.gz" | sha256sum --check
+          gzip -dc "$RUNNER_TEMP/mihomo.gz" > "$RUNNER_TEMP/mihomo"
+          chmod +x "$RUNNER_TEMP/mihomo"
+          echo "$RUNNER_TEMP" >> "$GITHUB_PATH"
       - name: Test builder
         run: |
           go test ./...
@@ -42,11 +50,13 @@ jobs:
         run: |
           go run .
           python3 scripts/profile.py
+          bash scripts/mihomo.sh
           cp LICENSE NOTICE sources.json dist/
+          cp happ-routing.json dist/routing-policy.json
           cp -R licenses dist/
           cp README.md dist/
           cd dist
-          sha256sum geosite.dat geoip.dat happ-routing.json manifest.json > SHA256SUMS
+          sha256sum geosite.dat geoip.dat happ-routing.json happ-import-link.txt manifest.json routing-policy.json mihomo-rules.yaml mihomo/*.txt mihomo/*.mrs > SHA256SUMS
       - name: Publish latest files to release branch
         run: |
           publish_dir="$RUNNER_TEMP/happ-routing-release"

@@ -99,6 +99,12 @@ func TestBuildRoundTripAndFailedSource(t *testing.T) {
 	root := t.TempDir()
 	configPath := filepath.Join(root, "sources.json")
 	dist := filepath.Join(root, "dist")
+	policyPath := filepath.Join(root, "happ-routing.json")
+	writePolicy(t, policyPath, routingPolicy{
+		DirectSites: []string{"domain:alib.ru"}, ProxySites: []string{"geosite:ai"},
+		DirectIP: []string{"192.0.2.0/24"}, ProxyIP: []string{"geoip:telegram"},
+		RouteOrder: "direct-proxy-block", GlobalProxy: "false", DomainStrategy: "IPIfNonMatch",
+	})
 	writeConfig := func(domainURL string) {
 		t.Helper()
 		cfg := config{Domains: []source{{Tag: "ai", URL: domainURL, Format: "mihomo"}}, IPs: []source{{Tag: "telegram", URL: base + "/ips"}}}
@@ -108,17 +114,17 @@ func TestBuildRoundTripAndFailedSource(t *testing.T) {
 		}
 	}
 	writeConfig(base + "/domains")
-	if err := build(context.Background(), configPath, dist, client); err != nil {
+	if err := build(context.Background(), configPath, policyPath, dist, client); err != nil {
 		t.Fatal(err)
 	}
 	var sites routercommon.GeoSiteList
 	siteData, err := os.ReadFile(filepath.Join(dist, "geosite.dat"))
-	if err != nil || proto.Unmarshal(siteData, &sites) != nil || len(sites.Entry) != 1 || sites.Entry[0].CountryCode != "AI" || len(sites.Entry[0].Domain) != 2 {
+	if err != nil || proto.Unmarshal(siteData, &sites) != nil || len(sites.Entry) != 3 || sites.Entry[0].CountryCode != "AI" || len(sites.Entry[0].Domain) != 2 {
 		t.Fatalf("geosite roundtrip: %v, %v", sites.Entry, err)
 	}
 	var ips routercommon.GeoIPList
 	ipData, err := os.ReadFile(filepath.Join(dist, "geoip.dat"))
-	if err != nil || proto.Unmarshal(ipData, &ips) != nil || len(ips.Entry) != 1 || ips.Entry[0].CountryCode != "TELEGRAM" || len(ips.Entry[0].Cidr) != 2 {
+	if err != nil || proto.Unmarshal(ipData, &ips) != nil || len(ips.Entry) != 3 || ips.Entry[0].CountryCode != "TELEGRAM" || len(ips.Entry[0].Cidr) != 2 {
 		t.Fatalf("geoip roundtrip: %v, %v", ips.Entry, err)
 	}
 	var m manifest
@@ -127,12 +133,23 @@ func TestBuildRoundTripAndFailedSource(t *testing.T) {
 		t.Fatalf("manifest: %v, %v", m, err)
 	}
 	writeConfig(base + "/missing")
-	if err := build(context.Background(), configPath, dist, client); err == nil || !strings.Contains(err.Error(), "HTTP 404") {
+	if err := build(context.Background(), configPath, policyPath, dist, client); err == nil || !strings.Contains(err.Error(), "HTTP 404") {
 		t.Fatalf("expected source error, got %v", err)
 	}
 	stillThere, err := os.ReadFile(filepath.Join(dist, "geosite.dat"))
 	if err != nil || !reflect.DeepEqual(stillThere, siteData) {
 		t.Fatalf("failed build changed publication: %v", err)
+	}
+	writeConfig(base + "/domains")
+	if err := os.WriteFile(policyPath, []byte(`{"ProxySites":["geosite:missing"]}`), 0644); err != nil {
+		t.Fatal(err)
+	}
+	if err := build(context.Background(), configPath, policyPath, dist, client); err == nil {
+		t.Fatal("accepted invalid policy")
+	}
+	stillThere, err = os.ReadFile(filepath.Join(dist, "geosite.dat"))
+	if err != nil || !reflect.DeepEqual(stillThere, siteData) {
+		t.Fatalf("invalid policy changed publication: %v", err)
 	}
 }
 

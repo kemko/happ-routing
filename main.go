@@ -65,13 +65,13 @@ type fetched struct {
 func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()
-	if err := build(ctx, "sources.json", "dist", &http.Client{Timeout: 3 * time.Minute}); err != nil {
+	if err := build(ctx, "sources.json", "happ-routing.json", "dist", &http.Client{Timeout: 3 * time.Minute}); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
 }
 
-func build(ctx context.Context, configPath, dist string, client *http.Client) error {
+func build(ctx context.Context, configPath, policyPath, dist string, client *http.Client) error {
 	configData, err := os.ReadFile(configPath)
 	if err != nil {
 		return err
@@ -135,6 +135,10 @@ func build(ctx context.Context, configPath, dist string, client *http.Client) er
 			records = append(records, inputRecord{group.kind, src.Tag, src.URL, hash(data), count})
 		}
 	}
+	rulesets, err := compilePolicy(policyPath, sites, ips)
+	if err != nil {
+		return err
+	}
 	marshal := proto.MarshalOptions{Deterministic: true}
 	geosite, err := marshal.Marshal(sites)
 	if err != nil {
@@ -148,6 +152,14 @@ func build(ctx context.Context, configPath, dist string, client *http.Client) er
 		{"geosite.dat", hash(geosite), len(geosite)},
 		{"geoip.dat", hash(geoip), len(geoip)},
 	}}
+	names := make([]string, 0, len(rulesets))
+	for name := range rulesets {
+		names = append(names, name)
+	}
+	sort.Strings(names)
+	for _, name := range names {
+		m.Outputs = append(m.Outputs, outputRecord{name, hash(rulesets[name]), len(rulesets[name])})
+	}
 	manifestData, err := json.MarshalIndent(m, "", "  ")
 	if err != nil {
 		return err
@@ -159,6 +171,9 @@ func build(ctx context.Context, configPath, dist string, client *http.Client) er
 		return err
 	}
 	defer os.RemoveAll(staged)
+	if err := os.MkdirAll(filepath.Join(staged, "mihomo"), 0755); err != nil {
+		return err
+	}
 	if err := os.MkdirAll(filepath.Join(staged, "sources", "domains"), 0755); err != nil {
 		return err
 	}
@@ -170,7 +185,10 @@ func build(ctx context.Context, configPath, dist string, client *http.Client) er
 			return err
 		}
 	}
-	for name, data := range map[string][]byte{"geosite.dat": geosite, "geoip.dat": geoip, "manifest.json": append(manifestData, '\n')} {
+	rulesets["geosite.dat"] = geosite
+	rulesets["geoip.dat"] = geoip
+	rulesets["manifest.json"] = append(manifestData, '\n')
+	for name, data := range rulesets {
 		if err := os.WriteFile(filepath.Join(staged, name), data, 0644); err != nil {
 			return err
 		}
