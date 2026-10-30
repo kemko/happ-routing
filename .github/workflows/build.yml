@@ -50,9 +50,14 @@ jobs:
       - name: Publish latest files to release branch
         run: |
           publish_dir="$RUNNER_TEMP/happ-routing-release"
-          git worktree add --detach "$publish_dir" HEAD
-          git -C "$publish_dir" switch --orphan release
+          git fetch --no-tags --depth=1 origin refs/heads/release
+          git worktree add --detach "$publish_dir" FETCH_HEAD
+          git -C "$publish_dir" rm -r --ignore-unmatch .
           cp -a dist/. "$publish_dir/"
-          git -C "$publish_dir" add .
+          git -C "$publish_dir" add -A
+          if git -C "$publish_dir" diff --cached --quiet; then
+            echo "Release files are unchanged"
+            exit 0
+          fi
           git -C "$publish_dir" -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m "Update geodata $(date -u +%Y-%m-%d)"
-          git -C "$publish_dir" push --force origin HEAD:refs/heads/release
+          git -C "$publish_dir" push origin HEAD:refs/heads/release

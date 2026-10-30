@@ -233,6 +233,15 @@ func parseDomains(data []byte, format string) ([]*routercommon.Domain, error) {
 			}
 			line = ascii
 		}
+		// Oversized names in upstream blocklists cannot match a valid DNS name.
+		tooLong := len(line) > 253
+		for _, label := range strings.Split(line, ".") {
+			tooLong = tooLong || len(label) > 63
+		}
+		if tooLong {
+			fmt.Fprintf(os.Stderr, "Skipping domain exceeding DNS length limits: %q\n", line)
+			return nil
+		}
 		if !validDomain(line) {
 			return fmt.Errorf("invalid domain %q", line)
 		}
