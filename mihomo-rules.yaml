@@ -1,0 +1,42 @@
+# Replace rule-providers and rules in the router config with this fragment.
+# Keep the local Proxy group, proxies, DNS, ports and XKeen settings.
+rule-providers:
+  direct-domains:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/happ-direct-domains.mrs
+    url: https://raw.githubusercontent.com/kemko/happ-routing/release/mihomo/direct-domains.mrs
+    interval: 3600
+    proxy: Proxy
+  proxy-domains:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/happ-proxy-domains.mrs
+    url: https://raw.githubusercontent.com/kemko/happ-routing/release/mihomo/proxy-domains.mrs
+    interval: 3600
+    proxy: Proxy
+  direct-ips:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/happ-direct-ips.mrs
+    url: https://raw.githubusercontent.com/kemko/happ-routing/release/mihomo/direct-ips.mrs
+    interval: 3600
+    proxy: Proxy
+  proxy-ips:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/happ-proxy-ips.mrs
+    url: https://raw.githubusercontent.com/kemko/happ-routing/release/mihomo/proxy-ips.mrs
+    interval: 3600
+    proxy: Proxy
+
+rules:
+  - RULE-SET,direct-domains,DIRECT
+  - RULE-SET,proxy-domains,Proxy
+  - RULE-SET,direct-ips,DIRECT
+  - RULE-SET,proxy-ips,Proxy
+  - MATCH,DIRECT

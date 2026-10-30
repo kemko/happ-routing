@@ -14,65 +14,21 @@
     "cloudflare-dns.com": "1.1.1.1"
   },
   "DirectSites": [
-    "domain:alib.ru",
-    "geosite:private"
+    "geosite:routing-direct"
   ],
   "DirectIp": [
-    "geoip:private"
+    "geoip:routing-direct"
   ],
   "ProxySites": [
-    "geosite:ai",
-    "geosite:ai-cn",
-    "geosite:gemini",
-    "geosite:youtube",
-    "geosite:twitter",
-    "geosite:tiktok",
-    "geosite:telegram",
-    "geosite:cloudflare",
-    "geosite:kinopub",
-    "geosite:rkn-domains",
-    "geosite:foreign-geoblock",
-    "domain:tailscale.com",
-    "domain:bestweapon.ru",
-    "domain:bestweapon.in",
-    "domain:bestweapon.one",
-    "domain:bestweapon.net",
-    "domain:rutracker.cc",
-    "domain:rutracker.org",
-    "domain:protontech.ch",
-    "domain:proton.me",
-    "domain:xiaomi.com",
-    "domain:ficbook.net",
-    "domain:hey.com",
-    "domain:raycast.com",
-    "domain:ray.so",
-    "domain:ifconfig.so",
-    "domain:gr-assets.com",
-    "domain:pocketcasts.com",
-    "domain:radio-t.com",
-    "domain:rucast.net",
-    "domain:overcast.fm",
-    "domain:amazon.com",
-    "domain:amazon.dev",
-    "domain:a2z.com",
-    "domain:images-amazon.com",
-    "domain:ssl-images-amazon.com",
-    "domain:goodreads.com",
-    "domain:hardcover.app",
-    "domain:p.kagi.com",
-    "domain:cdn-kagi.com",
-    "domain:zen-labs.org"
+    "geosite:routing-proxy"
   ],
   "ProxyIp": [
-    "geoip:twitter",
-    "geoip:telegram",
-    "geoip:cloudflare",
-    "geoip:rkn-ip"
+    "geoip:routing-proxy"
   ],
   "BlockSites": [],
   "BlockIp": [],
   "DomainStrategy": "IPIfNonMatch",
   "FakeDNS": "false",
   "UseChunkFiles": "false",
-  "LastUpdated": "1793354427"
+  "LastUpdated": "1793365210"
 }
