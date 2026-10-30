@@ -57,6 +57,31 @@ func TestIPs(t *testing.T) {
 	}
 }
 
+func TestDomainsSkipOversizedNames(t *testing.T) {
+	valid := strings.Repeat("a", 63) + ".com"
+	validMax := strings.Repeat(strings.Repeat("a", 63)+".", 3) + strings.Repeat("b", 61)
+	invalid := []string{
+		"llsluxx-buycheckbuycheckbuycheckbuycheckbuycheckbuycheck-buycheck.click",
+		strings.Repeat("a", 64) + ".com",
+		validMax + "b",
+	}
+	for _, format := range []string{"mihomo", "suffix"} {
+		t.Run(format, func(t *testing.T) {
+			input := strings.Join(append([]string{valid, validMax}, invalid...), "\n")
+			got, err := parseDomains([]byte(input), format)
+			if err != nil || len(got) != 2 {
+				t.Fatalf("expected only valid domains, got %v, %v", got, err)
+			}
+			if _, err := parseDomains([]byte(strings.Join(invalid, "\n")), format); err == nil {
+				t.Fatal("accepted a source with no valid domains")
+			}
+			if _, err := parseDomains([]byte(valid+"\nhttps://example.com"), format); err == nil {
+				t.Fatal("accepted malformed input")
+			}
+		})
+	}
+}
+
 func TestBuildRoundTripAndFailedSource(t *testing.T) {
 	client := &http.Client{Transport: roundTripFunc(func(req *http.Request) (*http.Response, error) {
 		status, body := http.StatusOK, ""
