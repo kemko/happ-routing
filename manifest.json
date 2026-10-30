@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-10-30T13:00:10.200778123Z",
+  "built_at": "2026-10-30T15:20:46.050032741Z",
   "inputs": [
     {
       "kind": "domains",
@@ -124,8 +124,8 @@
   "outputs": [
     {
       "name": "geosite.dat",
-      "sha256": "b27d61ee1a8cbd653537f9aa9f61835b9f4e5ccb253432c2916de06a4e6ef7fc",
-      "bytes": 58725580
+      "sha256": "3129c95f95060baa9710f2fbf3560e1edbf0873af8a63c93438dc7fca211b24f",
+      "bytes": 58725647
     },
     {
       "name": "geoip.dat",
@@ -134,8 +134,8 @@
     },
     {
       "name": "mihomo/direct-domains.txt",
-      "sha256": "e41fe768a3d496880e56c4f2cc7b9753219891713108d7981e709d056de2aaf8",
-      "bytes": 2752
+      "sha256": "fd536401aaa4649369a65137eb4fee215c956a305873df77fc2046bdcb52ff8e",
+      "bytes": 2807
     },
     {
       "name": "mihomo/direct-ips.txt",
