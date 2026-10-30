@@ -53,7 +53,7 @@ AI используется целиком, включая китайские с
 
 В исходном [happ-routing.json](https://github.com/kemko/happ-routing/blob/main/happ-routing.json) сохранены ручные исключения:
 
-- `DirectSites`: `alib.ru` и приватные домены.
+- `DirectSites`: `alib.ru`, Rutube (`rutube.ru`, `rutubelist.ru`, `rtbcdn.ru`, `rutube.sport` с поддоменами) и приватные домены. Прямые доменные исключения имеют приоритет над VPN IP-списками, в том числе над записями адресов Rutube в `rkn-ip`.
 - `ProxySites`: категории и объединённые ручные домены из Happ и XKeen, включая отдельное прежнее правило `gvt1.com`.
 - `DirectIp`: приватные адреса.
 - `ProxyIp`: категории Twitter, Telegram, Cloudflare и РКН.
