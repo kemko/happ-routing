@@ -84,7 +84,7 @@ class MihomoTest(unittest.TestCase):
                         for _ in range(100):
                             try:
                                 with opener.open(f"http://127.0.0.1:{controller}/providers/rules", timeout=0.2) as response:
-                                    loaded = json.load(response)["providers"]
+                                    loaded = json.load(response)["providers"] or {}
                                 if all(loaded.get(name, {}).get("ruleCount", 0) > 0 for name in entries):
                                     # Listeners open before providers load and routing resumes.
                                     probe = http.client.HTTPConnection("127.0.0.1", port, timeout=0.2)
