@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '17 3 * * *'
   workflow_dispatch:
+  pull_request:
   push:
     branches: [main]
     paths:
@@ -23,7 +24,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: publish-geodata
+  group: ${{ github.event_name == 'pull_request' && format('test-geodata-{0}', github.event.pull_request.number) || 'publish-geodata' }}
   cancel-in-progress: false
 
 jobs:
@@ -58,6 +59,7 @@ jobs:
           cd dist
           sha256sum geosite.dat geoip.dat happ-routing.json happ-import-link.txt manifest.json routing-policy.json mihomo-rules.yaml mihomo/*.txt mihomo/*.mrs > SHA256SUMS
       - name: Publish latest files to release branch
+        if: github.event_name != 'pull_request'
         run: |
           publish_dir="$RUNNER_TEMP/happ-routing-release"
           git fetch --no-tags --depth=1 origin refs/heads/release

@@ -16,6 +16,13 @@ from urllib.request import ProxyHandler, build_opener
 
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
+        if self.path == "/direct-domains.mrs":
+            # Keep a provider unready after the proxy port starts accepting connections.
+            time.sleep(0.25)
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(self.server.direct_domains)
+            return
         self.send_response(200)
         self.end_headers()
 
@@ -61,8 +68,13 @@ class MihomoTest(unittest.TestCase):
             }
             config["hosts"]["ip-fallback.test"] = "127.0.0.2"
             path = root / "config.json"
-            path.write_text(json.dumps(config))
             server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+            server.direct_domains = (root / "direct-domains.mrs").read_bytes()
+            providers["direct-domains"].update(
+                type="http", url=f"http://127.0.0.1:{server.server_port}/direct-domains.mrs",
+                path=str(root / "downloaded-direct-domains.mrs"),
+            )
+            path.write_text(json.dumps(config))
             threading.Thread(target=server.serve_forever, daemon=True).start()
             try:
                 with (root / "mihomo.log").open("w+") as log:
@@ -71,17 +83,27 @@ class MihomoTest(unittest.TestCase):
                         opener = build_opener(ProxyHandler({}))
                         for _ in range(100):
                             try:
-                                with opener.open(f"http://127.0.0.1:{controller}/rules", timeout=0.2):
-                                    # The controller starts before the proxy listener.
-                                    with socket.create_connection(("127.0.0.1", port), timeout=0.2):
-                                        break
+                                with opener.open(f"http://127.0.0.1:{controller}/providers/rules", timeout=0.2) as response:
+                                    loaded = json.load(response)["providers"]
+                                if all(loaded.get(name, {}).get("ruleCount", 0) > 0 for name in entries):
+                                    # Listeners open before providers load and routing resumes.
+                                    probe = http.client.HTTPConnection("127.0.0.1", port, timeout=0.2)
+                                    try:
+                                        probe.request("GET", f"http://127.0.0.1:{server.server_port}/")
+                                        response = probe.getresponse()
+                                        response.read()
+                                        if response.status == 200:
+                                            break
+                                    finally:
+                                        probe.close()
                             except OSError:
-                                if process.poll() is not None:
-                                    break
-                                time.sleep(0.05)
+                                pass
+                            if process.poll() is not None:
+                                break
+                            time.sleep(0.05)
                         else:
-                            self.fail("Mihomo API/proxy did not become ready:\n" + (root / "mihomo.log").read_text())
-                        self.assertIsNone(process.poll())
+                            self.fail("Mihomo routing/providers did not become ready:\n" + (root / "mihomo.log").read_text())
+                        self.assertIsNone(process.poll(), (root / "mihomo.log").read_text())
                         for name, direct in (
                             ("both.test", True), ("sub.both.test", True),
                             ("proxy.test", False), ("sub.proxy.test", False),
@@ -94,7 +116,7 @@ class MihomoTest(unittest.TestCase):
                                 try:
                                     connection.request("GET", f"http://{name}:{server.server_port}/")
                                     response = connection.getresponse()
-                                    self.assertEqual(response.status == 200, direct, f"{name}: HTTP {response.status}")
+                                    self.assertEqual(response.status == 200, direct, f"{name}: HTTP {response.status}\n" + (root / "mihomo.log").read_text())
                                     response.read()
                                 finally:
                                     connection.close()
