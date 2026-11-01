@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-01T10:23:47.864197009Z",
+  "built_at": "2026-11-01T20:01:53.028099371Z",
   "inputs": [
     {
       "kind": "domains",
@@ -75,8 +75,8 @@
       "kind": "domains",
       "tag": "rkn-domains",
       "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/domains/full-sld.lst",
-      "sha256": "c5fb4053e8d837fd89cc57b011c88beea43dae909a8854512f3519b7c5eef0e0",
-      "entries": 1324993
+      "sha256": "6587ccc9a0a54d49abf187b63e5dce017f2b17a1d4dc261027f8ce28acb89421",
+      "entries": 1325589
     },
     {
       "kind": "domains",
@@ -117,20 +117,20 @@
       "kind": "ips",
       "tag": "rkn-ip",
       "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/full.lst",
-      "sha256": "0069ad11e0b0608acc0410f2f8f6d4c5a4d4c80c4a9531178cfa6b49e021a5d2",
-      "entries": 58829
+      "sha256": "9334969f5f7be7ad736bf02986f01ba08fe319c272b2d88eb4f0b9e1045d9bb1",
+      "entries": 58773
     }
   ],
   "outputs": [
     {
       "name": "geosite.dat",
-      "sha256": "b51e034cfb0bfc277d7b91d0b7091a03e00e042a2515daa55a107c2839fdc325",
-      "bytes": 58774781
+      "sha256": "8ca59b7a138d7f76e7beace289ffab5408397d06bfe9c798a601fa2c70b6b66e",
+      "bytes": 58796770
     },
     {
       "name": "geoip.dat",
-      "sha256": "a246b6647f58329ecc1e06330517e507558745aa07d964dbde1f64bc657363c5",
-      "bytes": 1194708
+      "sha256": "df9ed60119f15e61cf21ae055838154e62192524ab0ddb9d35967dccd438286d",
+      "bytes": 1193588
     },
     {
       "name": "mihomo/direct-domains.txt",
@@ -144,13 +144,13 @@
     },
     {
       "name": "mihomo/proxy-domains.txt",
-      "sha256": "29ffbe1554729e6e1777a8092b207d7daaa746d2df5abd3e59656d12213c0df0",
-      "bytes": 25400762
+      "sha256": "2508562d65ed09c39cbb8c4feb95a8d0cdfd88b197551f12dabfecc02922f43a",
+      "bytes": 25409914
     },
     {
       "name": "mihomo/proxy-ips.txt",
-      "sha256": "e119ceed6eea7e76e09b82e7942992e23ccc296bbac308dfc4f0ea6b9452f370",
-      "bytes": 987426
+      "sha256": "7e300400a74828e636f041931865bbad2b55ce6dcf8440c9f055abf88ea2626e",
+      "bytes": 986663
     }
   ]
 }
