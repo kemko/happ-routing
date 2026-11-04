@@ -1,18 +1,18 @@
 {
-  "built_at": "2026-11-03T10:46:57.946614117Z",
+  "built_at": "2026-11-04T10:50:23.681090292Z",
   "inputs": [
     {
       "kind": "domains",
       "tag": "ai",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.list",
-      "sha256": "f22708872502d8cec77801debadccf62e01d84ac7400fe04ff06cc5fb8355421",
+      "sha256": "a45d4e9aeff6ade2119591fa5e679cbe64d4ce53349aaac3b3d2c4c11b15bb3f",
       "entries": 213
     },
     {
       "kind": "domains",
       "tag": "ai-cn",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.list",
-      "sha256": "f050d3333cc43a0094b59e9ac8a8e74fad6332a328a46950786dc18f0309a155",
+      "sha256": "06658227b0d1c64f9d9be4b5eeb544e21dffbc2ceb6f110f52b7306c0afc2f06",
       "entries": 120
     },
     {
