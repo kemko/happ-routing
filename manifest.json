@@ -1,18 +1,18 @@
 {
-  "built_at": "2026-11-04T10:50:23.681090292Z",
+  "built_at": "2026-11-05T10:47:51.524714737Z",
   "inputs": [
     {
       "kind": "domains",
       "tag": "ai",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.list",
-      "sha256": "a45d4e9aeff6ade2119591fa5e679cbe64d4ce53349aaac3b3d2c4c11b15bb3f",
+      "sha256": "4ee70bcff0a881daf3fe8cfeaed3a8236be50dde4bc1ce0de643aa03e5464fbf",
       "entries": 213
     },
     {
       "kind": "domains",
       "tag": "ai-cn",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.list",
-      "sha256": "06658227b0d1c64f9d9be4b5eeb544e21dffbc2ceb6f110f52b7306c0afc2f06",
+      "sha256": "e4ad26b2d1f46b1b1d08ffb173a13a33057386e950238c2fca7bab60fe829575",
       "entries": 120
     },
     {
@@ -75,22 +75,22 @@
       "kind": "domains",
       "tag": "rkn-domains",
       "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/domains/full-sld.lst",
-      "sha256": "75737b67b183ba134062e04e98e01f639f36ca64f0e190499787110ebda42cd6",
-      "entries": 1325588
+      "sha256": "673fe5e4dcaf2db34bfbd41775cbddf6d7dd1d1d3815ce892d297aa56b40528b",
+      "entries": 1327788
     },
     {
       "kind": "domains",
       "tag": "foreign-geoblock",
       "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/geoblock/full-sld.lst",
-      "sha256": "f4f9d445c1b5cbd03a0516c483b4a8ffe049e0f40168754406062db54618e5cb",
-      "entries": 1195
+      "sha256": "7102ab04269ca8669d0b4bb04af4701c6d69049a2aa2797278a3ea6fd737c174",
+      "entries": 1196
     },
     {
       "kind": "ips",
       "tag": "twitter",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.list",
-      "sha256": "07cbf8d51170d689472d0abb997103d80485bf2cb0ca814ea8445a9ca11a6b3e",
-      "entries": 19
+      "sha256": "13a7b4a699cc3f054eab729038298fefd832c2659cadba58aba16d48e6e4b184",
+      "entries": 20
     },
     {
       "kind": "ips",
@@ -103,8 +103,8 @@
       "kind": "ips",
       "tag": "cloudflare",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cloudflare.list",
-      "sha256": "efa2ab849ded9a63e30fb18aa70761cf25fc59ca7f86bf39bef4462bfe551162",
-      "entries": 788
+      "sha256": "56c266737342b04d52148328edfbfc9d21185c3a4c01a02158be7ed3f19b6249",
+      "entries": 813
     },
     {
       "kind": "ips",
@@ -117,20 +117,20 @@
       "kind": "ips",
       "tag": "rkn-ip",
       "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/full.lst",
-      "sha256": "e0fe0d4a29ccc2be2b7e47a372bd54ebad23c8a46099ff69c5c6a8a32ef76edb",
-      "entries": 59020
+      "sha256": "7529ca7ec525262d393c709ac9bfff187db816c8b5ad83dc7da4d0d8092ec843",
+      "entries": 58323
     }
   ],
   "outputs": [
     {
       "name": "geosite.dat",
-      "sha256": "6717dafb3dcd67390786d8bfb01ba3a1af10ee29d962c9d4820c32690c711c23",
-      "bytes": 58796772
+      "sha256": "6307bce48bc1b724d0fcd3a785eab4bf0fc773c69f34b4c34cb6f30939f9078b",
+      "bytes": 58891940
     },
     {
       "name": "geoip.dat",
-      "sha256": "672dcb3ca36be47798a6f4b0aed3177e286269bd36f10105d4ecc7f824dbdc6e",
-      "bytes": 1198518
+      "sha256": "c2de9ad203eb1f143b1b40e1fe0b8f0db13b69f02a4436024266437c740a28ff",
+      "bytes": 1185024
     },
     {
       "name": "mihomo/direct-domains.txt",
@@ -144,13 +144,13 @@
     },
     {
       "name": "mihomo/proxy-domains.txt",
-      "sha256": "f8f9b2547eab86100892c4346ef78f9d7b66fb5798a9c983f94029152540abf5",
-      "bytes": 25409915
+      "sha256": "6195c5080af98b143dd60e2f1142950481f471f84320aa6f35f6429df3fcec60",
+      "bytes": 25450896
     },
     {
       "name": "mihomo/proxy-ips.txt",
-      "sha256": "7b79e60529e99b1530d05daebbb35fb114d67e4f51a387f040029e1881dfc723",
-      "bytes": 990781
+      "sha256": "b9618337a102716f997ed3181695ab84efb9f385fcd416519946b3c0ad0dc5c5",
+      "bytes": 980258
     }
   ]
 }
