@@ -1,18 +1,18 @@
 {
-  "built_at": "2026-11-19T11:33:05.249685288Z",
+  "built_at": "2026-11-20T11:29:26.943877458Z",
   "inputs": [
     {
       "kind": "domains",
       "tag": "ai",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.list",
-      "sha256": "8b1628e0f6eb5e2327ccd5723acd4c3267b1ab9b9b4fc5ee4ae5691c86ee5d18",
+      "sha256": "775398224f04d0fdcdf4d28494b37a9d39c85127d1616e660e9e5034ae939692",
       "entries": 218
     },
     {
       "kind": "domains",
       "tag": "ai-cn",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.list",
-      "sha256": "dbd81c2c5b7806cbc7f16598eddc9f2bf73692805ccec1f101c36b44e0c2e6c2",
+      "sha256": "b0032f9b81dd8b2bd98c7cce0bb968a8ffd93898e06f304e9dbd540635fe52a1",
       "entries": 129
     },
     {
@@ -75,8 +75,8 @@
       "kind": "domains",
       "tag": "rkn-domains",
       "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/domains/full-sld.lst",
-      "sha256": "95ef4bf7fce8c359d3f97b4d7e92a06d1f1687d1bbf259aaf08645d503cda34a",
-      "entries": 1342894
+      "sha256": "e558d1e8d2c36b3ab5cfce78609fa78c363b18b2464c259cbbfb3cc364fa7ed0",
+      "entries": 1346226
     },
     {
       "kind": "domains",
@@ -117,20 +117,20 @@
       "kind": "ips",
       "tag": "rkn-ip",
       "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/full.lst",
-      "sha256": "65ad72603e7032613eabbcbd14bd9f56ce434ca6d7a234e1434660576bcf3ce6",
-      "entries": 58145
+      "sha256": "b6258a1b8e496082bda8fc9ea4b07167c69d2fb1749014e46fe14ace6382c0dd",
+      "entries": 58015
     }
   ],
   "outputs": [
     {
       "name": "geosite.dat",
-      "sha256": "6da14ae505ce011b73cc248c18c8455a6afb770c8cdd2b63a603c5f41186e4b4",
-      "bytes": 59561322
+      "sha256": "7d6299eccf109e25ca34a35e4d61a771800c98f885a25f33ba2bcc8f9736d7ce",
+      "bytes": 59698994
     },
     {
       "name": "geoip.dat",
-      "sha256": "a98d3092cbf658bb49918720b55742703b7aa4e0724a2c2398f61b8e9ef09ffc",
-      "bytes": 1183360
+      "sha256": "89fd8eadbeb5ea4793d917c76e287958d2303fb62c871bfa37e549582e91410c",
+      "bytes": 1180730
     },
     {
       "name": "mihomo/direct-domains.txt",
@@ -144,13 +144,13 @@
     },
     {
       "name": "mihomo/proxy-domains.txt",
-      "sha256": "ad6f1801104894507c7fd638c10c1fcaa4cc785d0fcac2361411f5a67a0ae655",
-      "bytes": 25740658
+      "sha256": "ce7fe535329c0fc811065cf03ef7f07ab019b95da96b2416c38ff5303b83f28f",
+      "bytes": 25799498
     },
     {
       "name": "mihomo/proxy-ips.txt",
-      "sha256": "9ca0b651768b689e29387951a81d6fac8c37333ed80587f985edb8da77d04a2c",
-      "bytes": 979515
+      "sha256": "90e13e674a329ce382b60d3c89cebaf341ac42f337eedc956dfb0cab30c71b37",
+      "bytes": 977405
     }
   ]
 }
