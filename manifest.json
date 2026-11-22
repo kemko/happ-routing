@@ -1,18 +1,18 @@
 {
-  "built_at": "2026-11-21T10:56:25.064989294Z",
+  "built_at": "2026-11-22T11:15:09.30293612Z",
   "inputs": [
     {
       "kind": "domains",
       "tag": "ai",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.list",
-      "sha256": "e5a6d58a3e127668ff512bb189d42fe661f7ccec61baa33ce423afd9c98ffa4f",
+      "sha256": "c8e883a49f9157d02f4519429cd2df92067f1f6091d752b6441a916f617ca0a0",
       "entries": 218
     },
     {
       "kind": "domains",
       "tag": "ai-cn",
       "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-cn.list",
-      "sha256": "dbd81c2c5b7806cbc7f16598eddc9f2bf73692805ccec1f101c36b44e0c2e6c2",
+      "sha256": "badb474003095d5ac682e3a51ee444347271612bb6ac456d249df12ee5a08104",
       "entries": 129
     },
     {
@@ -117,8 +117,8 @@
       "kind": "ips",
       "tag": "rkn-ip",
       "url": "https://raw.githubusercontent.com/Noktomezo/RussiaFancyLists/main/lists/blacklist/ipsets/full.lst",
-      "sha256": "f700910d02b91960ce9afd5f1bd200ee7bebea70d3b3a9f7c544d814f0173695",
-      "entries": 58146
+      "sha256": "fc7ec2c803b28da312417e06b73812b506d784e958536f12faf5ce3bcb242e26",
+      "entries": 58221
     }
   ],
   "outputs": [
@@ -129,8 +129,8 @@
     },
     {
       "name": "geoip.dat",
-      "sha256": "a1dd14cafccbac91669675930118318bf8954b1fe23479b32fd55c149ff33983",
-      "bytes": 1183350
+      "sha256": "32c07746ff4b7a34d2f04355d7fcef5cc47ce6b35b379f17843f5a3d5c8f373f",
+      "bytes": 1184860
     },
     {
       "name": "mihomo/direct-domains.txt",
@@ -149,8 +149,8 @@
     },
     {
       "name": "mihomo/proxy-ips.txt",
-      "sha256": "4810d21c8dca04c9a72a534892fff646daa3edf4b40fefbf54b2fe7806b290be",
-      "bytes": 979328
+      "sha256": "d0f45e5ef16218647dc708bacb918c9da84d2e36cdf4f83818efe47c3a0d58e1",
+      "bytes": 980596
     }
   ]
 }
